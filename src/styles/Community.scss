@@ -1,0 +1,939 @@
+@import './Component.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+
+// 커뮤니티 페이지 메인
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // max-width: 90%;
+  max-width: 70%;
+  margin: auto;
+  // background-color: pink;
+}
+
+// 커뮤니티 페이지 제목&검색창 부분
+.communityHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $color-gray-1;
+  font-weight: 600;
+  .communityTitle {
+    font-size: 24px;
+    margin: 2vw 0 1vw 0;
+  }
+  //   background-color: pink;
+  button {
+    width: 100px;
+    height: 30px;
+    background-color: $color-blue-3;
+    border: none;
+    font-size: 16px;
+
+    color: $color-black;
+    span {
+      &:hover {
+        color: $color-blue-1;
+      }
+    }
+  }
+}
+
+.communityContentBox {
+  width: 100%;
+  height: 110vh;
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+// 게시글 부분
+.post {
+  // background-color: pink;
+  width: 100%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  // border-radius: 10px;
+  // border-top: 1px solid $color-gray-1;
+  border-bottom: 1px solid $color-gray-1;
+  align-items: space-around;
+  margin-bottom: 1rem;
+
+  //   게시글 내용
+  .postContents {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  //  (1) 유저 정보
+  .userProfile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    height: 30px;
+    // background-color: pink;
+    a {
+      display: flex;
+      align-items: center;
+    }
+    img {
+      width: 25px;
+      height: 25px;
+      margin-right: 2px;
+      margin-top: 20%;
+      border-radius: 50%;
+    }
+    span {
+      margin-right: 5px;
+      color: $color-gray-2;
+    }
+  }
+  //   (2) 게시글 정보
+  .contentBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .textContent {
+      width: 80%;
+      .title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 18px;
+        font-weight: 700;
+        width: 70%;
+      }
+      .text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        white-space: normal;
+        line-height: 1.4;
+        width: 90%;
+      }
+    }
+    .imgBox {
+      width: 100px;
+      height: 75px;
+      overflow: hidden;
+      border-radius: 5px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  // (3) 좋아요, 댓글 버튼
+  .statusBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // background-color: red;
+    height: 30px;
+    div {
+      display: flex;
+      align-items: center;
+      width: 7vw;
+      justify-content: space-between;
+
+      button {
+        outline: 0;
+        background: none;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+    .category {
+      background-color: #f0f3fa;
+      padding: 2px 6px;
+      font-size: 14px;
+      margin-right: 2px;
+      color: #0056f3;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}
+
+// 게시글 있는 박스
+.postBox {
+  width: 70%;
+  height: fit-content;
+  margin-bottom: 3vw;
+  // background-color: red;
+}
+.rankingBox {
+  width: 28%;
+  input {
+    width: 70%;
+    height: 46px;
+    border: 1px solid $color-gray-1;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px;
+  }
+  .searchBox {
+    position: relative;
+    display: flex; // Use flexbox to make children elements appear in a row
+    align-items: center; // Align items vertically in the center
+    justify-content: space-between; // Add space between the input and button
+
+    form {
+      display: flex; // Use flexbox for the form as well
+      width: 100%; // Take up 100% width of the container
+
+      input {
+        flex: 1; // Allow the input to grow and take up remaining space
+        // margin-right: 10px; // Add some space between the input and button
+        width: 100%;
+      }
+
+      button {
+        background-color: white;
+        border: 1px solid $color-gray-1;
+        height: 50px;
+        width: 50px;
+        flex-shrink: 0; // Prevent the button from shrinking
+      }
+    }
+  }
+  .postListBox {
+    width: 100%;
+    height: fit-content;
+    margin-top: 1vw;
+    border: 1px solid $color-gray-1;
+  }
+  .postListTitle {
+    width: 100%;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    // padding: 1vw;
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      // color: $color-blue-1;
+      // color: $color-blue-1;
+    }
+  }
+  .postListContent {
+    ul {
+      list-style: none;
+      padding: 1vw;
+      margin: 0;
+      li:hover {
+        filter: opacity(0.7);
+      }
+
+      li {
+        margin-top: 0.5rem;
+        width: 100%;
+        height: 56px;
+        border-bottom: 1px solid $color-gray-1;
+        a {
+          display: flex;
+          justify-content: space-between;
+          .category {
+            font-size: 14px;
+          }
+          .listTitle {
+            font-size: 16px;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+          }
+          .listComment {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            .material-symbols-outlined {
+              font-size: 18px;
+            }
+          }
+        }
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+.post:hover {
+  filter: opacity(0.7);
+}
+
+// 게시글 읽기 페이지
+
+.communityReadBox {
+  width: 100%;
+  margin-top: 1rem;
+  .postRead {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    .postContents {
+      width: 90%;
+
+      display: flex;
+      margin-bottom: 1rem;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 10px 0;
+      .userProfile {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 30px;
+        .delModiBtn {
+          background: none;
+          border: none;
+          span:hover {
+            color: $color-blue-1;
+          }
+        }
+        .profile {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 30px;
+        }
+        img {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          margin-top: 15%;
+          margin-right: 6px;
+        }
+        span {
+          margin-right: 5px;
+          color: $color-gray-2;
+        }
+        .category {
+          background-color: #f0f3fa;
+          padding: 2px 6px;
+          font-size: 14px;
+          margin-right: 2px;
+          color: #0056f3;
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+      .contentBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        .textContent {
+          width: 90%;
+          .title {
+            font-size: 22px;
+            font-weight: 800;
+            width: 100%;
+          }
+          .text {
+            margin-top: 1rem;
+            color: $color-gray-2;
+            white-space: pre-line;
+            line-height: 1.4;
+          }
+        }
+      }
+    }
+  }
+
+  .statusBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        border: 0;
+        outline: 0;
+        background: none;
+      }
+    }
+    .report {
+      width: fit-content;
+      // background-color: pink;
+      button {
+        display: flex;
+        align-items: center;
+        border: 1px solid $color-gray-1;
+        background-color: none;
+        padding: 4px 8px;
+        border-radius: 5px;
+        p {
+          font-size: 14px;
+          color: $color-gray-2;
+        }
+        span {
+          font-size: 14px;
+          color: $color-gray-2;
+        }
+      }
+      button:hover {
+        border: 1px solid $color-red-2;
+      }
+      button:hover p {
+        color: $color-red-2;
+      }
+      button:hover span {
+        color: $color-red-2;
+      }
+    }
+
+    .report button.clicked p,
+    .report button.clicked span {
+      color: $color-red-2;
+    }
+    button.clicked {
+      border: 1px solid $color-red-2;
+    }
+  }
+  .readImgBox {
+    display: flex;
+    margin: 1rem 0;
+    justify-content: center;
+    img {
+      width: 30%;
+    }
+  }
+}
+
+.likeBtn {
+  span:hover {
+    color: $color-blue-1;
+  }
+}
+.likeClick p,
+.likeClick span {
+  color: $color-blue-1;
+}
+
+.likeClick {
+  color: $color-blue-1;
+}
+
+.countComment {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 1rem 0 0.5rem 0;
+  padding-bottom: 1rem;
+  width: 90%;
+}
+
+// 댓글창 부분
+.commentBox {
+  width: 100%;
+  border-top: 1px solid $color-gray-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4vw;
+  .commentInnerBox {
+    width: 90%;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-gray-1;
+    .userProfile {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 30px;
+
+      .profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 30px;
+        width: fit-content;
+      }
+      a {
+        display: flex;
+        align-items: center;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 6px;
+        margin-top: 15%;
+      }
+      span {
+        margin-right: 2px;
+      }
+    }
+    .commentText {
+      margin-top: 0.5rem;
+      width: 70%;
+      height: auto;
+    }
+    .statusBox {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 30px;
+      span {
+        font-size: 14px;
+        color: $color-gray-2;
+      }
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 11vh;
+        button {
+          // border: 1px solid $color-gray-1;
+          padding: 0.25rem 0.5rem;
+          // border-radius: 5px;
+          outline: 0;
+          background-color: $color-blue-3;
+          span {
+            color: $color-black;
+          }
+        }
+        button span:hover {
+          color: $color-blue-1;
+        }
+      }
+      .report {
+        width: auto;
+      }
+    }
+  }
+}
+.undo {
+  color: $color-gray-2;
+  position: absolute;
+  top: 1%;
+  // left: 2%;
+}
+
+.commentWriteBox {
+  width: 90%;
+  border-radius: 10px;
+  border: 1px solid $color-gray-1;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  .commentWriteInnerBox {
+    width: 95%;
+    margin: 1rem 0;
+  }
+  .userProfile {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+
+    // background-color: red;
+    a {
+      display: flex;
+      align-items: center;
+    }
+    img {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+    }
+    span {
+      margin-right: 2px;
+    }
+    button {
+      border: 0;
+      outline: 0;
+      background: $color-blue-3;
+      color: $color-white;
+      padding: 0.5rem;
+      span {
+        color: $color-black;
+      }
+    }
+    span:hover {
+      color: $color-blue-1;
+    }
+  }
+  textarea {
+    border: 1px solid $color-gray-1;
+    text-align: left;
+    resize: none;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+  }
+}
+
+.modalBackGround {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0, 0, 0, 0.7);
+  // backdrop-filter: blur(5px);
+  z-index: 1;
+  position: absolute;
+  .modalBox {
+    position: fixed;
+    width: 60%;
+    height: 80%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .modalInnerBox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 90%;
+    margin: 0 auto;
+    padding: 2vw;
+  }
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // background-color: pink;
+    button {
+      span:hover {
+        color: $color-blue-1;
+      }
+    }
+  }
+  .postContentBox {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    label {
+      font-size: 18px;
+      font-weight: 700;
+
+      margin-bottom: 0.5rem;
+    }
+    select,
+    input {
+      height: 2rem;
+      border: 1px solid $color-gray-1;
+      padding: 0 10px;
+      // border-radius: 5px;
+    }
+    textarea {
+      border: 1px solid $color-gray-1;
+      padding: 10px;
+      // border-radius: 5px;
+    }
+    Button {
+      width: 100px;
+      height: 30px;
+      background-color: $color-blue-3;
+      border: none;
+      font-size: 16px;
+      span:hover {
+        font-weight: 600;
+        color: $color-blue-1;
+      }
+    }
+  }
+}
+
+.moreInfos {
+  width: fit-content;
+  border: none;
+  padding: 0;
+  background: none;
+  span {
+    color: $color-black;
+  }
+}
+
+.modifyToggle {
+  background-color: pink;
+  width: 150px;
+  height: 50px;
+  top: 20%;
+  right: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  // line-height: 30px;
+  text-align: center;
+  z-index: 100;
+  button {
+    height: 50%;
+  }
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  font-variation-settings: 'FILL' 1;
+  &.heart {
+    // color: $color-blue-2;
+    // font-variation-settings:
+    &.active {
+      color: $color-blue-1;
+    }
+  }
+}
+
+.paginationBox {
+  width: fit-content;
+  // background-color: pink;
+  margin: auto;
+  display: flex;
+  margin-bottom: 3vw;
+  align-content: center;
+  .paginationBtn {
+    margin: 0 0.5rem;
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border-left: 1px solid $color-gray-1;
+    border-right: 1px solid $color-gray-1;
+    padding: 0 0.5rem;
+    span:hover {
+      color: $color-blue-1;
+    }
+  }
+  .paginationBtn {
+    &.active {
+      span {
+        color: $color-blue-1;
+      }
+    }
+  }
+}
+
+.searchModal {
+  position: absolute;
+  background-color: $color-white;
+  // background-color: blue;
+  top: 1%;
+  left: 106%;
+  // border: 1px solid $color-gray-1;
+  width: 253%;
+  height: 105vh;
+  .statusBox {
+    div {
+      width: 25%;
+      justify-content: space-around;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0.7em 0.5rem;
+    margin: 0;
+    li:hover {
+      filter: opacity(0.7);
+    }
+    li {
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid $color-gray-1;
+    }
+  }
+
+  .notFoundPost {
+    // background-color: pink;
+    height: 10%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    p {
+      font-size: 22px;
+    }
+  }
+}
+.listTitle {
+  font-size: 16px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin-top: 8px;
+  &:first-of-type {
+    color: $color-blue-1;
+  }
+}
+
+.replyNick {
+  color: $color-gray-2;
+  margin-right: 1%;
+}
+
+#deleteBox1 {
+  width: 3vw;
+}
+
+// $breakpoint-mobile: 335px;
+// $breakpoint-tablet: 758px;
+// $breakpoint-desktop: 1024px;
+
+// 모바일
+@media (min-width: 335px) and (max-width: 757px) {
+  .main {
+    // background-color: pink;
+    max-width: 90%;
+  }
+  .postBox {
+    width: 100%;
+  }
+  .rankingBox {
+    position: absolute;
+    top: 130%;
+    width: 60%;
+    // background-color: pink;
+  }
+  #postSearch {
+    position: relative;
+    margin: auto;
+  }
+  .postListBox {
+    display: none;
+  }
+  .searchModal {
+    top: -2150%;
+    height: 110vh;
+    left: 0;
+    width: 120%;
+    // background-color: pink;
+    .post {
+      .statusBox {
+        div {
+          width: 40vw;
+        }
+      }
+    }
+  }
+  .post {
+    .statusBox {
+      div {
+        width: 30vw;
+      }
+    }
+  }
+  .modalBackGround {
+    .modalBox {
+      width: 80%;
+    }
+  }
+  .commentBox {
+    .commentInnerBox {
+      .statusBox {
+        div {
+          width: 28vw;
+        }
+      }
+    }
+  }
+  #deleteBox1 {
+    width: 8vw;
+  }
+
+  .delModiBtn {
+    span {
+      font-size: 0.8rem;
+    }
+  }
+
+  .profile {
+    p {
+      font-size: 0.8rem;
+    }
+    span {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+// 태블릿
+@media (min-width: 758px) and (max-width: 1023px) {
+  .main {
+    // background-color: gray;
+    max-width: 80%;
+  }
+
+  .modalBackGround {
+    .modalBox {
+      width: 80%;
+    }
+  }
+  .post {
+    .statusBox {
+      div {
+        width: 25%;
+      }
+    }
+  }
+
+  .searchModal {
+    .post {
+      .statusBox {
+        div {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .commentBox {
+    .commentInnerBox {
+      .statusBox {
+        div {
+          width: 12vw;
+        }
+      }
+    }
+  }
+
+  #deleteBox1 {
+    width: 4vw;
+  }
+}

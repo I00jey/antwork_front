@@ -1,0 +1,18 @@
+@import '../styles/Component.scss';
+
+.savedMsg {
+    text-align: center;
+    margin: 20vh 0 20px 0;
+}
+
+.toNews {
+    margin: 0 auto;
+    background-color: $color-blue-1;
+    font-size: 14px;
+    height: 40px;
+    width: 150px;
+    color: white;
+    line-height: 40px;
+    cursor: pointer;
+    text-align: center;
+}

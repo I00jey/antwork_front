@@ -1,0 +1,78 @@
+@import './Component.scss';
+
+.heading {
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+  .cell {
+    background-color: $color-blue-2;
+    color: white;
+  }
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-gray-1;
+  border-width: thin;
+  height: 5vh;
+  width: 20%;
+  max-width: 20%;
+}
+
+.postText {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.adminUser {
+  display: flex;
+}
+
+.reported {
+  p {
+    color: $color-red-2;
+  }
+}
+
+.adminUserBox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  a {
+    display: flex;
+    width: 100%;
+  }
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+  button {
+    border: none;
+    background-color: $color-blue-3;
+    color: $color-black;
+    padding: 0.5rem 1rem;
+    span:hover {
+      color: $color-blue-1;
+    }
+  }
+  .reportText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    width: 80%;
+  }
+}
+.paginationBox {
+  margin-top: 3%;
+}

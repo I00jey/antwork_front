@@ -1,0 +1,35 @@
+@import '../styles/Component.scss';
+.error-wrapper {
+  .error-img {
+    height: 230px;
+    display: flex;
+    margin: 2vw auto;
+  }
+  .error-msg,
+  .error-detail,
+  .back-to-main {
+    text-align: center;
+    width: 200px;
+  }
+  .error-msg {
+    margin: 0 auto;
+    font-size: 28px;
+    width: 100%;
+  }
+  .error-detail {
+    margin: 10px auto;
+    font-size: 14px;
+    width: 300px;
+    line-height: 20px;
+  }
+  .back-to-main {
+    margin: 0 auto;
+    background-color: $color-blue-1;
+    font-size: 14px;
+    height: 40px;
+    width: 150px;
+    color: white;
+    line-height: 40px;
+    cursor: pointer;
+  }
+}

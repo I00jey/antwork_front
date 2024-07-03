@@ -1,0 +1,55 @@
+// 변수로 색 지정
+
+$color-blue-1: #0056f3;
+$color-blue-2: #dce5f5;
+$color-blue-3: #f0f3fa;
+$color-blue-4: #e6f1ff;
+$color-blue-5: blue;
+
+$color-red-1: red;
+$color-red-2: #ffe6e6;
+$color-red-3: #faf0f0;
+// $color--3: ;
+// $color--4: ;
+// $color--5: ;
+
+$color-gray: #ececec;
+$color-gray-1: #d9dadb;
+$color-gray-2: #808080;
+$color-white: #ffffff;
+$color-black: #333;
+
+$color-green: rgba(38, 166, 154, 1);
+$color-red-2: rgba(255, 78, 66, 1);
+
+$rarius: 50px;
+
+@import url('https://webfontworld.github.io/pretendard/Pretendard.css');
+.App {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Pretendard';
+  color: $color-black;
+}
+
+a {
+  text-decoration: none;
+  color: $color-black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.class {
+  border-radius: $rarius;
+  background-color: $color-blue-1;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}

@@ -1,0 +1,113 @@
+@import './Component.scss';
+
+.flip {
+  width: 40%;
+  height: 800px;
+  //   background-color: red;
+  position: relative;
+  perspective: 1100px;
+}
+
+.card {
+  width: 100%;
+  height: 800px;
+  position: relative;
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+
+// .front,
+// .back {
+//   position: absolute;
+//   width: 100%;
+//   height: 800px;
+//   backface-visibility: hidden;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   color: #fff;
+// }
+
+// .front {
+//   background: tomato;
+// }
+
+// .back {
+//   //   background: royalblue;
+//   transform: rotateY(180deg);
+// }
+
+// .flip:hover .card {
+//   transform: rotateY(180deg);
+// }
+
+.searchBox {
+  //   background-color: red;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  width: 100%;
+  // background-color: blue;
+  select {
+    height: 100%;
+    // width: 15%;
+    border: none;
+    // background-color: pink;
+    font-weight: 24px;
+    option {
+      font-weight: 24px;
+    }
+  }
+  button {
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    background-color: $color-blue-1;
+    border: none;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+}
+.mainCompanyBox {
+  height: 110vh;
+}
+
+.companyInfoBox {
+  display: flex;
+  height: 800px;
+  flex-direction: row;
+  .CompanyInfoInner {
+    width: 60%;
+    height: 100%;
+    .TickerBox {
+      width: 100%;
+      height: 50%;
+    }
+    .CProfileBox {
+      width: 100%;
+      height: 50%;
+    }
+  }
+}
+
+@media (min-width: 335px) and (max-width: 757px) {
+  .companyInfoBox {
+    flex-direction: column;
+    height: 130vh;
+    .CompanyInfoInner {
+      width: 100%;
+      .TickerBox {
+        height: 70%;
+      }
+      .CProfileBox {
+        height: 60vh;
+      }
+    }
+    .flip {
+      width: 100%;
+      height: 50vh;
+    }
+  }
+}

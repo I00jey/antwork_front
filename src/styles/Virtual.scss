@@ -1,0 +1,668 @@
+@import './Component.scss';
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.invest-wrapper {
+  display: flex;
+  //   justify-content: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6vw;
+  // position: relative;
+  .invest-chart {
+    width: 70%;
+  }
+
+  .invest-input {
+    position: relative;
+    margin-left: 2vw;
+    width: 24%;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    // border-radius: 10px;
+
+    .selectSymbolBox {
+      width: 100%;
+      height: 7%;
+      display: flex;
+      justify-content: center;
+      border: 1px solid $color-gray-1;
+    }
+    .mainContentBox {
+      height: 85%;
+      width: 100%;
+      border: 1px solid $color-gray-1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .currentCostBox {
+      width: 90%;
+      height: 15%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      span {
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
+    // 매수, 매도 다음 버튼
+    .btn-wapper {
+      width: 80%;
+      height: 17%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      // background-color: pink;
+      justify-content: space-between;
+      // margin-top: 0.5rem;
+      .Btn {
+        font-size: 18px;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 0.5rem;
+      }
+      .tradingBtnBox {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        // background-color: red;
+        flex-direction: column;
+        // align-items: center;
+        justify-content: space-between;
+        .buy {
+          background-color: $color-green;
+          color: $color-white;
+          width: 95%;
+          height: 45%;
+        }
+        .sell {
+          background-color: $color-red-2;
+          color: $color-white;
+          width: 95%;
+          height: 45%;
+        }
+      }
+      .nextBtnBox {
+        // background-color: blue;
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .Btn {
+          width: 95%;
+          background-color: $color-black;
+          p {
+            display: flex;
+            justify-content: center;
+            color: $color-white;
+            margin: 0 0.5rem;
+            span {
+              color: $color-white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .buy-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: $color-white;
+    flex-direction: column;
+    align-items: center;
+    left: 5%;
+    width: 90%;
+    height: 54%;
+    top: 30%;
+    // border: 1px solid $color-gray-1;
+    .buy-inputBox {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      label {
+        font-size: 14px;
+        color: $color-gray-2;
+      }
+      input {
+        width: 80%;
+        margin: 0.5rem 0;
+        accent-color: $color-green;
+      }
+    }
+    p {
+      font-weight: bold;
+      font-size: 20px;
+      margin: 2rem 0 1rem;
+
+      span {
+        color: $color-green;
+      }
+    }
+  }
+}
+
+.sell-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: $color-white;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  height: 54%;
+  top: 30%;
+  left: 5%;
+  // border: 1px solid $color-gray-1;
+  .sell-inputBox {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      font-size: 14px;
+      color: $color-gray-2;
+    }
+    input {
+      width: 80%;
+      margin: 0.5rem 0;
+      accent-color: $color-red-2;
+    }
+  }
+  p {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 2rem 0 1rem;
+
+    span {
+      color: $color-red-2;
+    }
+  }
+}
+
+.btn-wrapper {
+  margin: 1.5rem 0;
+  width: 80%;
+  height: 12%;
+  display: flex;
+  justify-content: space-around;
+  button {
+    width: 100px;
+    height: 100%;
+    font-size: 18px;
+  }
+  .orderBtn {
+    background-color: $color-green;
+    color: $color-white;
+    border: none;
+    border-radius: 0.5rem;
+  }
+  .sellBtn {
+    background-color: $color-red-2;
+    color: $color-white;
+    border: none;
+    border-radius: 0.5rem;
+  }
+  .closeBtn {
+    background-color: $color-black;
+    color: $color-white;
+
+    border: none;
+    border-radius: 0.5rem;
+  }
+}
+
+.currentStock {
+  display: flex;
+  width: 85%;
+  justify-content: space-around;
+
+  height: 15%;
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    // border-radius: 5px;
+    border: 1px solid $color-gray-1;
+    span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+}
+.totalMoney {
+  // border-radius: 5px;
+  border: 1px solid $color-gray-1;
+  width: 81%;
+  height: 15%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  // background-color: pink;
+  span {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.investMoney {
+  // border-radius: 5px;
+  border: 1px solid $color-gray-1;
+  width: 81%;
+  height: 15%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  // background-color: pink;
+  span {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-blue-1;
+  }
+}
+
+// 소제목
+.smallTitle {
+  font-size: 14px;
+  color: $color-gray-2;
+}
+
+.detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  left: -320%;
+  top: 0%;
+  width: 420%;
+  height: 110%;
+  // border-radius: 10px;
+  border: 1px solid rgb(204, 204, 204);
+  .deatail-profile {
+    display: flex;
+    width: 95%;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0.5rem 0 0.5rem 0;
+    .closeBtn {
+      background: none;
+      border: none;
+      span {
+        font-size: 30px;
+      }
+      span:hover {
+        color: $color-blue-1;
+      }
+    }
+  }
+  .detail-title {
+    // background-color: pink;
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+    p {
+      font-size: 20px;
+      font-weight: 700;
+      span {
+        font-size: 18px;
+        color: $color-gray-2;
+      }
+    }
+  }
+  .innerContent {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 80%;
+    // background-color: red;
+    .historyBox {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      // background-color: pink;
+      justify-content: space-evenly;
+      align-items: center;
+      .profitBox {
+        width: 80%;
+        height: 25%;
+        // background-color: red;
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        justify-content: space-evenly;
+        // border: 0.5px solid $color-gray-1;
+        .profitSurplus {
+          color: $color-blue-1;
+          text-align: center;
+          span {
+            color: $color-blue-1;
+          }
+        }
+        .profitDeficit {
+          color: $color-red-1;
+
+          span {
+            color: $color-blue-1;
+          }
+        }
+      }
+    }
+    .subTitle {
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-gray-2;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid $color-gray-1;
+    }
+  }
+}
+
+.symbol-Box {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  label {
+    color: $color-gray-2;
+  }
+  select {
+    width: 50%;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.status-Box {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  // background-color: pink;
+  // position: absolute;
+  // bottom: 103%;
+  justify-content: flex-end;
+  .resetBtn {
+    // background-color: $color-gray-1;
+    width: fit-content;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding: 3px 10px 3px 10px;
+    // text-align: center;
+    // display: flex;
+    // align-items: center;
+    margin-left: 2%;
+    background: none;
+    border: none;
+    span {
+      font-size: 17px;
+      color: $color-gray-2;
+      text-align: center;
+      line-height: 17px;
+      display: flex;
+      align-items: center;
+    }
+    span:hover {
+      color: $color-blue-1;
+    }
+  }
+}
+
+.rankModalBtn {
+  font-size: 14px;
+  width: fit-content;
+  padding: 0.5rem 0.5rem;
+  margin: auto;
+  margin-top: 1rem;
+  text-align: center;
+  position: relative;
+  background-color: $color-blue-3;
+  // border: 1px solid $color-gray-1;
+  span {
+    color: $color-black;
+  }
+  &.active {
+    span {
+      color: $color-blue-1;
+    }
+  }
+}
+
+.crown {
+  width: 20%;
+  position: absolute;
+  left: -6%;
+  top: 1%;
+  transform: rotate(-35deg);
+}
+.num1 {
+  path {
+    fill: #ffd43b;
+  }
+}
+
+.num2 {
+  path {
+    fill: #c0c0c0;
+  }
+}
+
+.num3 {
+  path {
+    fill: #cd7f32;
+  }
+}
+
+.ranking {
+  border-radius: 0 0 0 20%;
+  color: $color-white;
+  position: absolute;
+  width: 20%;
+  bottom: 70%;
+  left: 86%;
+  height: 30%;
+  opacity: 0.7;
+  text-align: center;
+}
+.number1 {
+  background-color: #ffd43b;
+}
+.number2 {
+  background-color: #c0c0c0;
+}
+.number3 {
+  background-color: #cd7f32;
+}
+
+.userImg1 {
+  border: 3px solid #ffd43b;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.userImg2 {
+  border: 3px solid #c0c0c0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+.userImg3 {
+  border: 3px solid #cd7f32;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.userInfo {
+  // background-color: pink;
+  height: 80%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    // font-size: 18px;
+    font-size: 1.2vw;
+    font-weight: 700;
+  }
+  span {
+    color: $color-gray-2;
+  }
+}
+
+// .nickName1 {
+//   color: #ffd43b;
+// }
+
+// .nickName2 {
+//   color: #c0c0c0;
+// }
+
+// .nickName3 {
+//   color: #cd7f32;
+// }
+
+#detailChart1 {
+  width: 100%;
+  height: 100%;
+}
+
+.userRankBox {
+  background-color: white;
+  width: 25%;
+  height: 60%;
+  right: 5.5%;
+  bottom: 20%;
+  position: absolute;
+  z-index: 100;
+  // border: 1px solid #d9dadb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.RankingBox0 {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  align-items: center;
+  justify-content: space-evenly;
+  .RankingBox1 {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    height: 30%;
+    align-items: center;
+    // border: 1px solid #d9dadb;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    .RankingBox2 {
+      width: 90%;
+      height: 100%;
+      position: relative;
+      text-align: left;
+      display: flex;
+
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+}
+
+@media (min-width: 335px) and (max-width: 757px) {
+  .invest-wrapper {
+    // background-color: pink;
+    flex-direction: column;
+    justify-content: center;
+    .invest-chart {
+      width: 100%;
+    }
+    .invest-input {
+      margin-top: 10%;
+      width: 100%;
+      height: 50vh;
+    }
+  }
+  .invest-wrapper {
+    height: 110vh;
+    .invest-input {
+      .btn-wapper {
+        .Btn {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  .detail-wrapper {
+    // background-color: pink;
+    top: -100%;
+    left: -5%;
+    width: 110%;
+    height: 90vh;
+    .innerContent {
+      display: flex;
+      flex-direction: column;
+      #detailChart1 {
+        height: 40%;
+      }
+
+      .historyBox {
+        width: 100%;
+      }
+    }
+    .userRankBox {
+      width: 90%;
+      top: 22%;
+    }
+
+    .RankingBox1 {
+      width: 100%;
+    }
+  }
+}

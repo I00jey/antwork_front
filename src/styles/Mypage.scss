@@ -1,0 +1,71 @@
+@import './Component.scss';
+
+.mypage-wrapper {
+  // profile-img
+  // display: flex;
+  // justify-content: flex-start;
+  form {
+    border: 1px solid $color-gray-1;
+    margin: 70px auto;
+    text-align: center;
+    width: calc(380px + 6vw);
+    padding: 0 3vw 3vw 3vw;
+    .mypage-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 2vw auto 1vw auto;
+      // width: 48vw;
+      // text-align: left;
+    }
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+    .img-edit-btn {
+      text-align: center;
+      .profile-input {
+        border: 0;
+        border-radius: 0;
+        width: 0;
+        height: 0;
+        padding: 0;
+      }
+    }
+  }
+  // .profile-img {
+  //   width: 20%;
+  //   margin-right: 1vw;
+  //   height: 30vw;
+  //   border: 1px solid black;
+  // }
+  // .mypage-contents {
+  //   width: 78%;
+  //   height: 30vw;
+  //   border: 1px solid black;
+  // }
+  .resetBtn,
+  .modifyBtn {
+    height: 46px;
+
+    line-height: 46px;
+    border: none;
+    width: 34%;
+  }
+  .resetBtn {
+    margin-right: 1vw;
+    background-color: white;
+    border: 1px solid gray;
+    display: inline-block;
+    color: gray;
+    font-weight: 500;
+  }
+  .modifyBtn {
+    background-color: $color-blue-1;
+    color: white;
+  }
+}
+.yellow {
+  margin-bottom: 10px;
+  color: yellow;
+}
