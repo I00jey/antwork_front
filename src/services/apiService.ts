@@ -665,6 +665,10 @@ export const deleteUser = async (currentUserId: String) => {
 // 뉴스
 export const mainNews = async () => {
   try {
+    console.log(
+      'mainNews API 호출 URL:',
+      process.env.REACT_APP_BACKSERVER + '/news/mainNews'
+    );
     const response = await axios.get(
       process.env.REACT_APP_BACKSERVER + '/news/mainNews',
       {
@@ -674,14 +678,20 @@ export const mainNews = async () => {
         withCredentials: true,
       }
     );
+    console.log('mainNews 응답:', response.data);
     return response.data;
   } catch (error) {
+    console.error('mainNews 오류:', error);
     throw new Error('예상치 못한 오류가 발생했습니다!');
   }
 };
 
 export const mainBoards = async () => {
   try {
+    console.log(
+      'mainBoards API 호출 URL:',
+      process.env.REACT_APP_BACKSERVER + '/community/mainBoards'
+    );
     const response = await axios.get(
       process.env.REACT_APP_BACKSERVER + '/community/mainBoards',
       {
@@ -691,8 +701,10 @@ export const mainBoards = async () => {
         withCredentials: true,
       }
     );
+    console.log('mainBoards 응답:', response.data);
     return response.data;
   } catch (error) {
+    console.error('mainBoards 오류:', error);
     throw new Error('예상치 못한 오류가 발생했습니다!');
   }
 };

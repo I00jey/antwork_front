@@ -1,4 +1,4 @@
-@import '../styles/Component.scss';
+@use '../styles/Component.scss' as *;
 
 .savedMsg {
     text-align: center;

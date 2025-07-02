@@ -1,4 +1,4 @@
-@import './Component.scss';
+@use './Component.scss' as *;
 
 .mypage-wrapper {
   // profile-img

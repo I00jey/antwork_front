@@ -1,4 +1,4 @@
-@import '../styles/Component.scss';
+@use '../styles/Component.scss' as *;
 .error-wrapper {
   .error-img {
     height: 230px;

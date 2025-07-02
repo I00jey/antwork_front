@@ -1,4 +1,4 @@
-@import './Component.scss';
+@use './Component.scss' as *;
 
 .flip {
   width: 40%;

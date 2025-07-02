@@ -1,4 +1,4 @@
-@import './Component.scss';
+@use './Component.scss' as *;
 
 .outer-wrapper {
   width: calc(100% - 30vw);
