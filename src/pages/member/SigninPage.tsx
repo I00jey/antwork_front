@@ -74,11 +74,7 @@ const SigninPage = () => {
     }
   };
 
-  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
-
-  const loginHandler = async () => {
-    window.location.href = link;
-  };
+  const link = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
 
   return (
     <>
@@ -87,8 +83,10 @@ const SigninPage = () => {
       </Helmet>
       <div className="form-box">
         <div className="page-title">소셜 로그인</div>
-        <div className="kakao-login-btn" onClick={loginHandler}>
+        <div className="kakao-login-btn">
+          <a href={link}>
           <img src={'kakao_login_btn.png'} alt="kakao login" />
+          </a>
         </div>
         <div className="hr-div"></div>
         <div className="page-title">로그인</div>
