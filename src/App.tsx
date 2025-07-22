@@ -154,7 +154,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header user={user} />
         <Routes>
           {/* 404 에러 페이지 */}
           {errorNum === 404 && <Route path="*" element={<NotFound />} />}
@@ -173,7 +173,7 @@ function App() {
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/findId" element={<FindIdPage />} />
-          <Route path="/kakao/callback" element={<MainPage />} />
+          <Route path="/oauth/kakao" element={<MainPage />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/wordBook" element={<WordBookPage />} />
           <Route path="/savedNews" element={<SavedNews />} />

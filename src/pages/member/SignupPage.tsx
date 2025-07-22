@@ -190,7 +190,7 @@ const SignupPage = () => {
     ) {
       pwCheckBox?.classList.add('blue');
       pwCheckBox?.classList.remove('red');
-      return setPwCheck('ⓘ 사용가능한 비밀번호입니다.');
+      return setPwCheck('');
     } else if (formData.user_password !== formData.user_pwCheck) {
       pwCheckBox?.classList.add('red');
       pwCheckBox?.classList.remove('blue');
@@ -220,7 +220,7 @@ const SignupPage = () => {
       ) {
         alert('비밀번호는 최소 8글자 이상입니다.');
         pwRef.current?.focus();
-      } else if (pwCheck.includes('일치')) {
+      } else if (pwCheck.includes('일치하지 않습니다.')) {
         alert('비밀번호가 일치하지 않습니다.');
         pwRef.current?.focus();
       } else if (nicknameCheck.includes('중복')) {

@@ -471,24 +471,27 @@ export const showRank = async (useData: any) => {
   }
 };
 
+
 // 카카오
 export const kakaoLogin = async (code: any) => {
-  axios
-    .get(process.env.REACT_APP_BACKSERVER + '/kakao/login', {
+  try {
+    const res = await axios.get(
+      process.env.REACT_APP_BACKSERVER + '/kakao/login', 
+      {
       params: { code },
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-    .then((res) => {
+    }
+  );
       console.log('카카오 로그인 성공');
       console.log(res.data);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 export const kakaoLogout = async (uri: any, data: any, headers: any) => {
   try {
@@ -498,7 +501,7 @@ export const kakaoLogout = async (uri: any, data: any, headers: any) => {
       data: data,
       headers: headers,
     });
-    // console.log('카카오 로그아웃 아이디', rtn.data);
+    console.log('카카오 로그아웃 아이디', rtn.data);
   } catch (error) {
     console.log('카카오 로그아웃 실패');
     console.log(error);
@@ -521,7 +524,7 @@ export const getKakaoId = async (token: String) => {
       data: param,
       headers: header,
     });
-    // console.log('카카오 토큰으로 아이디 찾기', rtn);
+    console.log('카카오 토큰으로 아이디 찾기', rtn);
     // return rtn.data.id;
   } catch (error) {
     console.log('카카오 아이디 찾기 에러', error);
@@ -561,6 +564,7 @@ export const userInfo = async (userData: any) => {
         withCredentials: true,
       }
     );
+    // console.log('사용자 데이터 ->', response.data)
     return response.data;
   } catch (error) {
     throw new Error('예상치 못한 오류가 발생했습니다!');
@@ -665,10 +669,10 @@ export const deleteUser = async (currentUserId: String) => {
 // 뉴스
 export const mainNews = async () => {
   try {
-    console.log(
-      'mainNews API 호출 URL:',
-      process.env.REACT_APP_BACKSERVER + '/news/mainNews'
-    );
+    // console.log(
+    //   'mainNews API 호출 URL:',
+    //   process.env.REACT_APP_BACKSERVER + '/news/mainNews'
+    // );
     const response = await axios.get(
       process.env.REACT_APP_BACKSERVER + '/news/mainNews',
       {
@@ -688,10 +692,10 @@ export const mainNews = async () => {
 
 export const mainBoards = async () => {
   try {
-    console.log(
-      'mainBoards API 호출 URL:',
-      process.env.REACT_APP_BACKSERVER + '/community/mainBoards'
-    );
+    // console.log(
+    //   'mainBoards API 호출 URL:',
+    //   process.env.REACT_APP_BACKSERVER + '/community/mainBoards'
+    // );
     const response = await axios.get(
       process.env.REACT_APP_BACKSERVER + '/community/mainBoards',
       {

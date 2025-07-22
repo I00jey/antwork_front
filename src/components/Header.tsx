@@ -5,18 +5,18 @@ import {
   deleteKakao,
   deleteUser,
   kakaoLogin,
-  kakaoLogout,
-  userInfo,
+  kakaoLogout
 } from '../services/apiService';
 import { UserData } from './../types/types';
+import { userInfo } from './../services/apiService';
 
-const Header = () => {
+const Header = ({ user }: { user: UserData | undefined }) => {
   const [jwtCookie, setjwtCookie, removejwtCookie] = useCookies(['jwtCookie']);
   const [kakaoToken, setkakaoToken, removekakaoToken] = useCookies([
     'kakaoToken',
   ]);
   const [isKakao, setisKakao, removeisKakao] = useCookies(['isKakao']);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState<boolean | null>(null);
   const [isToggle, setIsToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const location = useLocation();
@@ -31,48 +31,6 @@ const Header = () => {
     user_nickname: '',
     user_profile: '',
   });
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // console.log('useEffect 실행');
-
-    const getUserInfo = async () => {
-      try {
-        const params = new URL(document.location.toString()).searchParams;
-        const code = params.get('code');
-
-        if (code) {
-          // console.log('카카오 로그인 요청');
-          await kakaoLogin(code);
-          navigate('/');
-        }
-
-        const tokenId = jwtCookie['jwtCookie'];
-        // console.log('tokenId', tokenId);
-
-        if (tokenId) {
-          setIsLogin(true);
-          const response = await userInfo({ id: tokenId });
-          console.log('사용자 정보', response.info);
-          setUserInfos((prevState) => ({
-            ...prevState,
-            user_id: response.info.user_id,
-            user_nickname: response.info.user_nickname,
-            user_profile:
-              response.info.user_profile ||
-              process.env.PUBLIC_URL + 'mypage.png',
-          }));
-          setIsAdmin(response.info.isAdmin === 1);
-        } else {
-          setIsLogin(false);
-        }
-      } catch (error) {
-        console.log('카카오 로그인 또는 사용자 정보 가져오기 에러', error);
-      }
-    };
-    getUserInfo();
-  }, [jwtCookie['jwtCookie']]);
-
   const mypageToggle = () => {
     setIsToggle((prevIsToggle) => !prevIsToggle);
     if (isToggle) {
@@ -95,6 +53,7 @@ const Header = () => {
     setMenuToggle(false);
     setIsToggle(false);
   }, [location.pathname]);
+
 
   const handleLogout = async () => {
     setUserInfos({
@@ -132,23 +91,34 @@ const Header = () => {
     try {
       event.preventDefault();
 
-      if (window.confirm('탈퇴하시겠습니까?')) {
-        if (kakaoToken['kakaoToken']) {
-          await deleteKakao(kakaoToken['kakaoToken']);
-          removekakaoToken('kakaoToken');
-        }
-        const response = await deleteUser(userInfos.user_id);
-        if (response.success) {
-          alert('회원정보 삭제 성공');
-          removejwtCookie('jwtCookie');
-          removeisKakao('isKakao');
-          // console.log('회원정보 삭제 성공');
-          window.location.href = '/';
-        } else {
-          console.error('회원정보 삭제 실패');
-        }
+      if (!window.confirm('탈퇴하시겠습니까?')) return;
+      if (kakaoToken['kakaoToken']) {
+        await deleteKakao(kakaoToken['kakaoToken']);
+        removekakaoToken('kakaoToken');
+      }
+      const response = await deleteUser(userInfos.user_id);
+      if (response.success) {
+        alert('회원정보 삭제 성공');
+
+        // 쿠키 제거
+        removejwtCookie('jwtCookie');
+        removeisKakao('isKakao');
+        // console.log('회원정보 삭제 성공');
+
+        // 상태 초기화
+        setUserInfos({
+          user_id: '',
+          user_password: '',
+          user_pwCheck: '',
+          user_email: '',
+          isAdmin: 0,
+          user_nickname: '',
+          user_profile: '',
+        });
+
+        window.location.href = '/';
       } else {
-        return;
+        console.error('회원정보 삭제 실패');
       }
     } catch (error) {
       console.error('회원정보 삭제 실패:', error);
@@ -172,9 +142,39 @@ const Header = () => {
       }
     };
     checkAdmin();
-    // console.log(isAdmin);
-  }, [userInfos.user_id, isAdmin]);
+    console.log('관리자 여부 ->', isAdmin);
+  }, [isAdmin, userInfos.isAdmin]);
 
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      const tokenId = jwtCookie['jwtCookie'];
+      if (tokenId) {
+        setIsLogin(true);
+        console.log('jwt 토큰 ->', tokenId);
+        try {
+          const userdatas = await userInfo({ id: tokenId });
+          const userinfo = userdatas.info;
+          console.log('로그인 유저 정보 ->', userInfo);
+          setUserInfos({
+            user_id: userinfo.user_id,
+            user_password: '',
+            user_pwCheck: '',
+            user_email: userinfo.user_email,
+            isAdmin: userinfo.isAdmin,
+            user_nickname: userinfo.user_nickname,
+            user_profile: userinfo.user_profile,
+          });
+        } catch (error) {
+          console.log('사용자 정보 조회 실패 ->', error);
+        }
+      } else {
+        setIsLogin(false);
+      }
+    };
+
+    fetchUserInfo();
+  }, [jwtCookie]);
 
   const moveTop = () => {
     window.scrollTo(0, 0);
@@ -215,7 +215,6 @@ const Header = () => {
                 className="mypage-profile"
                 src={userInfos.user_profile}
                 alt=""
-                style={{}}
               />
             </div>
             {isToggle === true && (
@@ -285,7 +284,7 @@ const Header = () => {
             </div>
           </>
         )}
-        {isLogin === false && (
+        {isLogin === null && (
           <>
             <div className="Header-mypage-btn">
               <img

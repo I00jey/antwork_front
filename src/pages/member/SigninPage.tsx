@@ -11,12 +11,12 @@ const SigninPage = () => {
 
   // 폼 데이터 상태 관리
   const [formData, setFormData] = React.useState({
-    user_id: '',
-    user_password: '',
-    isChecked: false,
+    user_id: 'test',
+    user_password: 'testtest',
+    isChecked: true,
   });
 
-  const [cookies, setCookie, removeCookie] = useCookies(['saveId']);
+  const [cookies, setCookie, removeCookie] = useCookies(['saveId', 'jwtCookie']);
   useEffect(() => {
     // console.log(cookies);
     const savedId = cookies['saveId']; // 대괄호를 사용하여 속성에 액세스합니다.
@@ -45,23 +45,20 @@ const SigninPage = () => {
     }
   };
 
-  const handleRegister = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     try {
-      event.preventDefault();
-
-      // register 함수에 유저 데이터를 전달
+      // login 함수에 유저 데이터를 전달
       const response = await login(formData);
       if (!formData.isChecked) {
         removeCookie('saveId');
       }
-
       if (response.success) {
-        // console.log('로그인 성공:', response);
+        console.log('로그인 성공:', response);
         alert('로그인 성공!');
-        navigate(-1);
-        // window.location.reload();
+        window.location.href = '/'
       } else {
-        // console.error('로그인 실패:', response);
+        console.error('로그인 실패:', response);
         alert(response.message);
         navigate('/signin');
         // 실패 메시지 출력 또는 필요한 처리
@@ -85,7 +82,7 @@ const SigninPage = () => {
         <div className="page-title">소셜 로그인</div>
         <div className="kakao-login-btn">
           <a href={link}>
-          <img src={'kakao_login_btn.png'} alt="kakao login" />
+            <img src={'kakao_login_btn.png'} alt="kakao login" />
           </a>
         </div>
         <div className="hr-div"></div>
@@ -104,6 +101,7 @@ const SigninPage = () => {
             type="password"
             placeholder="비밀번호"
             className="input-box"
+            value={formData.user_password}
             onChange={handleInputChange}
           />
           <br />
@@ -121,7 +119,7 @@ const SigninPage = () => {
               <Link to="/findId">아이디 | 비밀번호 찾기</Link>
             </div>
           </div>
-          <button className="signinBtn" onClick={handleRegister}>
+          <button className="signinBtn" onClick={handleLogin}>
             로그인
           </button>
           <div className="account-options">
