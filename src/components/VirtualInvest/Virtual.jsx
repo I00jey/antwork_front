@@ -72,13 +72,21 @@ const Virtual = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getConvertData(symbol); // 데이터가 로딩될 때까지 대기
-        const resVol = await volumeArr;
-        setData(result.slice(index, yearofDay));
-        setVolume(resVol.slice(index, yearofDay));
-        setCurrentCost(data[data.length - 1].close);
+        const result = await getConvertData(symbol);  // API 호출
+        const resVol = volumeArr;
+
+        const slicedData = result.slice(index, yearofDay);
+        const slicedVol = resVol.slice(index, yearofDay);
+
+        setData(slicedData);
+        setVolume(slicedVol);
+
+        if (slicedData.length > 0) {
+          setCurrentCost(slicedData[slicedData.length - 1].close);
+        }
+
       } catch (error) {
-        // console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error);
       }
     };
 
